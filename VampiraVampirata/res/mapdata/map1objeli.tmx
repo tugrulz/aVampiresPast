@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="27" height="19" tilewidth="24" tileheight="24" nextobjectid="23">
+ <tileset firstgid="1" name="mainMap" tilewidth="24" tileheight="24" tilecount="513">
+  <image source="../../../../Desktop/mainMap.png" width="648" height="456"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="27" height="19">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAACxXVg7IYBgAAwRfbttPYto02tm3btm01tm3btm2z25nbb7hAAQEBgQlCUIIRnBCEJBShCUNYwhGeCEQkEpGJQlSiEZ0YxCQWsYlDXOIRnwQkJBGJSUJSkpGcv0hBSlKRmjSkJR3pyUBGMpGZLGQlG9nJQU5ykZs85CUf+SlAQQpRmCIUpRjFKUFJSlGaMpSlHOX5m3+oQEUqUZkqVKUa1alBTWpRmzrUpR71aUBDGtGYJjSlGc1pQUta0Zo2tKUd7elARzrRmS50pRvd6UFPetGbPvSlH/0ZwEAGMZghDGUYwxnBSEYxmjGMZRzjmcBEJjGZKUxlGtOZwUxmMZs5zGUe81nAQhbxL4tZwlKWsZwVrGQVq1nDWtaxng1sZBOb2cJWtrGdHexkF7vZw172sZ8DHOQQhznCUY5xnBOc5BSnOcNZznGeC1zkEpe5wlWucZ0b3OQWt7nDXe5xnwc85BGPecJTnvGcF7zkFa95w1ve8Z4PfOQTn/nCV77xnR/85Be/+UNAIBGYIAQlGMEJQUhCEZowhCUc4YlARCIRmShEJRrRiUFMYhGbOMQlHvFJQEISkZgkJCUZyfmLFKQkFalJQ1rSkZ4MZCQTmclCVrKRnRzkJBe5yUNe8pGfAhSkEIUpQlGKUZwSlKQUpSlDWcpRnr/5hwpUpBKVqUJVqlGdGtSkFrWpQ13qUZ8GNKQRjWlCU5rRnBa0pBWtaUNb2tGeDnSkE53pQle60Z0e9KQXvelDX/rRnwEMZBCDGcJQhjGcEYxkFKMZw1jGMZ4JTGQSk5nCVKYxnRnMZBazmcNc5jGfBSxkEf+ymCUsZRnLWcFKVrGaNaxlHevZwEY2sZktbGUb29nBTnaxmz3sZR/7OcBBDnGYIxzlGMc5wUlOcZoznOUc57nARS5xmStc5RrXucFNbnGbO9zlHvd5wEMe8ZgnPOUZz3nBS17xmje85R3v+cBHPvGZL3zlG9/5wU9+8Zs//D/+QPwHA4KOagQIAAA=
+  </data>
+ </layer>
+ <objectgroup name="Interactables">
+  <object id="3" name="books" type="interactable" x="239" y="336" width="24" height="48"/>
+  <object id="4" name="shelf" type="interactable" x="407" y="95" width="25" height="48"/>
+  <object id="5" name="sink" type="interactable" x="97" y="337" width="22" height="21"/>
+  <object id="6" name="manPic" type="interactable" x="410" y="316" width="19" height="17"/>
+  <object id="7" name="table" type="interactable" x="336" y="335" width="24" height="25"/>
+  <object id="8" name="piano" type="musical" x="227" y="216" width="48" height="47"/>
+  <object id="9" name="food" type="interactable" x="167" y="237" width="24" height="27"/>
+  <object id="10" name="oldBed" type="interactable" x="121" y="97" width="22" height="48"/>
+ </objectgroup>
+</map>
