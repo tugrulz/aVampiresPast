@@ -1,0 +1,4 @@
+OnGraphics'i implement eden Graphics g alan view classlarýnýn draw() functioný ekrana bir þey çizmiyor
+SleepingMan eksik, yapýlmasý gerek
+Item use algoritmasý hazýr ama çalýþmýyor.
+Ana menü yok, options yok, help yok, introduction screen yok, pause yok, pause menu yok.
