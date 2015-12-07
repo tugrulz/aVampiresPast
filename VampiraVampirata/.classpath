@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="lib" path="lib/jars/lwjgl.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Users/Tuğrulcan/workspace/VampiraVampirata/javadoc_lwjgl/"/>
+			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="VampiraVampirata/lib/natives/windows"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="lib/jars/slick.jar" sourcepath="lib/jars/slick.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="file:/C:/Users/Tuğrulcan/workspace/VampiraVampirata/javadoc/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Tuğrulcan/Desktop/CS319 Proje/slick/lib/jogg-0.0.7.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Tuğrulcan/Desktop/CS319 Proje/slick/lib/jorbis-0.0.15.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
