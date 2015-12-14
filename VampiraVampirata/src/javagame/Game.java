@@ -27,6 +27,8 @@ public class Game extends StateBasedGame implements Observer{
 	public static final int introduction = 4;
 	public static final int pause = 5;
 	
+	public static final int STATE_COUNT = 5;
+	
 	boolean fullscreen;
 	int width;
 	int height;

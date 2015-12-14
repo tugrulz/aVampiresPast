@@ -50,7 +50,6 @@ public class CharacterView extends MovingView {
 	
 	public void draw() throws SlickException {
 		
-		//System.out.println("Bes aslýnda yoðum");
 		//super.draw();
 		if (currentAnim == null)
 			System.out.println("null lan bu");

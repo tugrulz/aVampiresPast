@@ -10,11 +10,17 @@ public class CharacterController extends MovingController {
 	}
 	
 	public void interact() {
+		System.out.println("Tried to interact");
 		if (map.canInteract(obj.posFeetX, obj.posFeetY)){
 			Interactable ref = map.getInteractable(obj.posFeetX, obj.posFeetY);
-//			if (ref.type == InteractableType.TALKONLY) {
+			System.out.println("Interaction succesfull");
+			if (ref.type == InteractableType.TALKONLY) {
 				System.out.println(ref.charTalk);
-//			}
+				((Character)obj).talk = ref.charTalk;
+			}
+			else if (ref.type == InteractableType.OPEN){
+				takeItems(ref);
+			}
 		}
 	}
 	
@@ -23,15 +29,18 @@ public class CharacterController extends MovingController {
 	}
 	
 	public void takeItems(Interactable container) {
-		if(((Character)obj).inventory.isEmpty()){
+//		if(((Character)obj).inventory.isEmpty()){
 			if (((Character)obj).inventory.current <= ((Character)obj).inventory.SIZE){
-				Item i = container.giveItem(0);
+				System.out.println("alýrým itemlerini");
 				boolean notFull = true;
-				while (i != null && notFull) {
+				Item i;
+				do {
+					i = container.giveItem(0);
+					System.out.println(i.name + " alýcam");
 					notFull = ((Character)obj).inventory.addItem(i);
-				}
+				} while (i != null && notFull);
 			}
-		}
+//		}
 	}
 	
 	public void useItem(int index){ // BUNA Bi DiZAYN PATTERN UYDURMAK GEREK

@@ -24,13 +24,20 @@ public class BloodBarView implements Observer, OnScreen{
 	}
 	
 	public void setGraphics(Graphics g) {
-		if (noGraphics) {
 			this.g = g;
-			noGraphics = false;
-		}
 	}
 	
 	public void draw() throws SlickException {
+		if (g != null) {
+			g.drawRect(POS_X, 50, 10, obj.BLOOD_MAX);
+			g.setColor(Color.red);
+			g.fillRect(POS_X, newPosY, 10, obj.getBlood());
+			g.setColor(Color.white);
+		}
+	}
+	
+	public void draw(Graphics g) throws SlickException {
+		this.g = g;
 		g.drawRect(POS_X, 50, 10, obj.BLOOD_MAX);
 		g.setColor(Color.red);
 		g.fillRect(POS_X, newPosY, 10, obj.getBlood());
@@ -40,14 +47,15 @@ public class BloodBarView implements Observer, OnScreen{
 	@Override
 	public void update(Observable obs, Object arg1) {
 		// TODO Auto-generated method stub
-		if (obs instanceof Character && !noGraphics) {
+		if (obs instanceof Character) {
 			obj = (Character)obs;
 			newPosY = POS_Y + obj.BLOOD_MAX - obj.getBlood();
-			try {
-				draw();
+			/*try {
+				if (arg1 instanceof Graphics)
+					draw((Graphics)arg1);
 			} catch (SlickException e) {
 				System.out.println("could not draw");
-			}
+			}*/
 		}
 
 	}

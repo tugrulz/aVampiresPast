@@ -12,6 +12,8 @@ public class Character extends Moving {
 	boolean hasObjectiveItem;
 	boolean catched;
 	
+	String talk;
+	
 	// Constructors
 	public Character(){
 		super("Vampire");
@@ -22,6 +24,35 @@ public class Character extends Moving {
 		hasObjectiveItem = false;
 		inventory = new Inventory();
 		catched = false;
+		talk = "";
+	}
+	
+	public void setRandomTalk() {
+		int rand = (int)(Math.random()*10 + 1);
+		System.out.print("Deneme" + rand);
+		switch (rand) {
+        case 1:  talk = "Only Van Helsing can hunt me.";
+        break;
+        case 2:  talk = "Still a better love story than twilight.";
+        break;
+        case 3:  talk = "Trolololololo.";
+        break;
+        case 4:  talk = "Wanna be my friend?";
+        break;
+        case 5:  talk = "I'm bored.";
+        break;
+        case 6:  talk = "I have a dream.";
+        break;
+        case 7:  talk = "Haters gonna hate.";
+        break;
+        case 8:  talk = "The internet is dark and full of spoilers.";
+        break;
+        case 9: talk = 	"Eto'o is done.";
+        break;
+        case 10: talk = "Give me your command.";
+        break;
+		}
+		
 	}
 
 	public float getBlood() {
@@ -73,6 +104,7 @@ public class Character extends Moving {
 		}
 		
 		public boolean addItem(Item i){
+			System.out.println(i.name + "eklenecek");
 			boolean changed = itemList.add(i);
 			if (changed)
 				notifyObservers();

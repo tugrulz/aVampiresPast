@@ -30,14 +30,15 @@ public class CharacterProfileView implements Observer, OnScreen {
 	}
 	
 	public void setGraphics(Graphics g) {
-		if (noGraphics) {
 			this.g = g;
 			noGraphics = false;
-		}
 	}
 	
 	public void draw() {
-		g.drawImage(this.face, 50, 250, Color.lightGray);
+		if (g == null)
+			System.out.println("graphics null þu anda");
+		else
+			g.drawImage(this.face, 45, 409, Color.lightGray);
 	}
 	
 	public void setMoodImage() {
@@ -49,9 +50,9 @@ public class CharacterProfileView implements Observer, OnScreen {
 	@Override
 	public void update(Observable obs, Object arg) {
 		// TODO Auto-generated method stub
-		if (obs instanceof Character && !noGraphics && this.face == null) {
+		if (obs instanceof Character && g != null && this.face == null) {
 			obj = (Character)obs;
-			draw();
+//			draw(); Does not work
 //			g.drawImage(this.face, 50, 250, Color.lightGray);
 		}
 //		else 

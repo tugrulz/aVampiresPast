@@ -9,7 +9,11 @@ public class SleepingManController extends CharacterController {
 		((SleepingMan)obj).setSleeping(false);
 	}
 	
-	public void catchPlayer(Character vamp){
+	public void checkPlayer(Character vamp){
+		
+	}
+	
+	private void catchPlayer(Character vamp) {
 		
 	}
 }

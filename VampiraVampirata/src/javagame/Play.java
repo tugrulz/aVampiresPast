@@ -31,7 +31,7 @@ public class Play extends BasicGameState{
 	boolean quit = false;
 	
 	float vampirePositionX = 360;
-	float vampirePositionY = 360;
+	float vampirePositionY = 350;
 	
 	// Map Control
 	MapControl map;
@@ -51,6 +51,9 @@ public class Play extends BasicGameState{
 	final float BAR_MAX = 400;
 	float posYBar = 50;
 	
+	String talk = "";
+	boolean initial = false;
+	
 	
 	public Play(int state) {
 		
@@ -65,7 +68,6 @@ public class Play extends BasicGameState{
 		mapView = new MapView(map.getMap());
 		
 		// SETTLE
-		System.out.println("Naberlan");
 		vampire = new Character();
 		vampireControl = new CharacterController(vampire, map);
 		vampireView = new CharacterView();
@@ -81,26 +83,31 @@ public class Play extends BasicGameState{
 		vampire.addObserver(vampireInventory);
 		vampire.notifyObservers();
 		vampire.setPosition(vampirePositionX,vampirePositionY);
-		
 		//
 		//MusicManager msc = new MusicManager();
 		
 	}
 	
 	// Draws stuff on screen
+	// Unexpected problem: the objects only draws themselves in these function	
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
-		
 		mapView.render();
+		map.renderTileMap();
 		vampireView.draw();
-		for(OnScreen view: views){
-			view.setGraphics(g);
-//			view.draw(); // They draw themselves in the update method
-		}
-		
+			for(OnScreen view: views){
+				view.setGraphics(g);
+				view.draw();
+			}
+		g.drawString(vampire.talk, 180, 5);
+//		}
+//		vampire.notifyObservers(g);
+//		vampireBlood.draw(g);
+//		g.drawRect(vampirePositionX, vampirePositionY, 100, 100);
 	}
 	
 	// Updates images (for animations etc.)
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
+
 //		if (vampire.hasObjectiveItem)
 			//loadnextmap 
 		if(vampire.isCatched()) {
@@ -111,6 +118,17 @@ public class Play extends BasicGameState{
 
 		vampireControl.decreaseBlood(0.01f);
 		vampire.decreaseBlood(0.01f);
+		
+		if (delta > 15) {
+			if (!initial)
+				initial = true;
+			else {
+				if (!vampire.talk.equals(""))
+					vampire.talk = "";
+				else if (delta > 15)
+					vampire.setRandomTalk();
+			}
+		}
 
 	}
 	
@@ -158,7 +176,12 @@ public class Play extends BasicGameState{
 	}
 	
 	void gameOver(GameContainer gc) {
+		save();
 		gc.exit();
+	}
+	
+	void save(){
+		
 	}
 }
 

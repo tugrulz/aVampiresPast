@@ -19,9 +19,9 @@ public class MovingController {
 	
 	public MovingController(Moving obj, MapControl map) {
 		this.obj = obj;
-		heightInTiles = map.getHeigthInTiles(obj.height);
-		widthInTiles = map.getWidthInTiles(obj.width);
-		System.out.println("deneme height and widht" + heightInTiles + " " + widthInTiles);
+//		heightInTiles = map.getHeigthInTiles(obj.height);
+//		widthInTiles = map.getWidthInTiles(obj.width);
+//		System.out.println("deneme height and widht" + heightInTiles + " " + widthInTiles);
 		this.map = map;
 	}
 	

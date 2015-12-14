@@ -27,6 +27,15 @@ public class Interactable {
 		afterTalk = "There is nothing to take";
 	}
 	
+	public Interactable(String talk, InteractableType type) {
+		inside = new ArrayList<Item>();
+		locked = false;
+		interacted = false;
+		charTalk = talk;
+		afterTalk = "There is nothing to take";
+		this.type = type;
+	}
+	
 	public Interactable(boolean locked, String talk) {
 		inside = new ArrayList<Item>();
 		this.locked = locked;
@@ -54,6 +63,7 @@ public class Interactable {
 		}
 		else
 			return inside.remove(i);
+
 	}
 	
 	

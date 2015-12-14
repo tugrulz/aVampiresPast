@@ -137,6 +137,15 @@
     <property name="collidable" value="true"/>
    </properties>
   </tile>
+  <tile id="291">
+   <properties>
+    <property name="charTalk" value="Maybe there's something I can use"/>
+    <property name="interactable" value="true"/>
+    <property name="item1" value="healthp10"/>
+    <property name="itemNumber" value="1"/>
+    <property name="type" value="OPEN"/>
+   </properties>
+  </tile>
   <tile id="299">
    <properties>
     <property name="collidable" value="true"/>

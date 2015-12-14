@@ -42,7 +42,6 @@ public class Moving extends java.util.Observable {
 	}
 	
 	public void changePosition(float change, boolean changeX) {
-		System.out.println("change position functionýndayým");
 		if (changeX) posX += change;
 		else posY += change;
 		updateFeet();

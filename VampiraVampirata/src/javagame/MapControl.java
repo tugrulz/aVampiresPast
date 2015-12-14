@@ -40,7 +40,7 @@ public class MapControl {
 		// Decode the currentTile id into x and y
 		int i = (int)posX / map.getTileWidth();
 		int j = (int)posY / map.getTileHeight();
-		System.out.println(i + "ve    " + j);
+//		System.out.println(i + "ve    " + j + "from mapcontrol");
 		
 		if (dir == Common.Direction.UP) {
 			return map.isMovable(i,j-1);
@@ -59,6 +59,7 @@ public class MapControl {
 		// Change to tile first
 		int i = (int)posX / map.getTileWidth();
 		int j = (int)posY / map.getTileHeight();
+		System.out.println(i + "ve    " + j + "from mapcontrol");
 		
 		// Check the upper tile, j-1th tile
 		return (map.doesInteractableExist(i, j-1)); 
@@ -76,6 +77,7 @@ public class MapControl {
 	
 	
 	// Those are used to return how much tiles an object occupies given its dimensions
+	// Those are trash, TiledMap already have a getWidth and getHeight that does the same.
 	public int getWidthInTiles(int size){
 		return Math.round((float)size/map.getWidth());
 	}

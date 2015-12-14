@@ -14,4 +14,6 @@ public interface OnScreen {
 	
 	public void draw() throws SlickException;
 	
+//	public void draw(Graphics g);
+	
 }
