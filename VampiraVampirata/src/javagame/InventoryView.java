@@ -36,10 +36,6 @@ public class InventoryView implements Observer, OnScreen{
 		}
 	}
 	
-	public void drawItems() {
-		// draw Item images..
-	}
-	
 	public void draw() throws SlickException  {
 		if (g != null){
 //			outer = new Rectangle(POS_X, POS_Y, WIDTH, HEIGHT);

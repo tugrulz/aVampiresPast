@@ -25,8 +25,6 @@ public class Moving extends java.util.Observable {
 		posFeetY = posY + height;
 		movingDirection = Direction.DOWN;
 		speed = 0.2f;
-		
-		//setChanged(); // WILL CHANGE IT LATER TO APPROPRIATE FUNCTIONS
 	}
 	
 	public void setPosition(float x, float y) {
@@ -90,27 +88,6 @@ public class Moving extends java.util.Observable {
 	public void setMovingDirection(Direction movingDirection) {
 		this.movingDirection = movingDirection;
 	}
-	
-	// TRASHHHHHHHHHHHHHHH
-	// This positions are the positions of the object's feet
-	//int posX; 
-	//int posY;
-	// TRASH ALGORITH
-	// Every character has a base (i.e. foot) to move on ground. posX and posY are the position of this base. However
-	// a base may be too wide that it could occupy 3 tiles at once. To detect the collision with neighbouring tiles, 
-	// we set a simple algorithm:
-	/* 1. Set the position of the base at the middle.
-	 * 2. Set how much tiles the base occupies.
-	 * 3. Set how much of the boundaring tiles the base should NOT OCCUPY (set as percent)
-	 * 4. If a base occupies larger than it supposed to, this is considered moving between tiles. 
-	 * 5. In case this happens, collision detection detects if the next tile is movable or not.
-	 * 6. If not movable, then the character's position won't be changed.
-	 * 
-	 * In this game, both the Character and the sleeping man are humans which has the same dimensions. 
-	 * So their base (foot) takes 1 tile, and percent is set to 0.5
-	 */
-//	float percent = 0.5f;
-	
 	
 	
 	

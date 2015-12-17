@@ -188,8 +188,7 @@ public class Play extends BasicGameState{
 			gameOver(gc, (Game)sbg);
 			
 		}
-		
-//		vampire.notifyObservers((Float)(float)delta);
+	
 
 	}
 	
@@ -212,7 +211,6 @@ public class Play extends BasicGameState{
 			vampireControl.move(Direction.UP, delta);
 		}
 		else if (input.isKeyDown(Input.KEY_ENTER)){
-//			System.out.println("X: " + Mouse.getX() + "Y: " + Mouse.getY());
 			vampireControl.interact();
 		}
 		else if (input.isKeyDown(Input.KEY_ESCAPE)){
@@ -238,14 +236,12 @@ public class Play extends BasicGameState{
 		}
 		else
 			vampireControl.idle();
-	
-//		else
-//			System.out.println("duruyorum");
 	}
 	
 	void pause(GameContainer gc, StateBasedGame game) {
 		gc.pause();
-		game.enterState(5);
+//		game.enterState(5);
+		((GameController)gc).changeState("pause");
 	}
 	
 	public int getID() {
@@ -254,14 +250,16 @@ public class Play extends BasicGameState{
 	
 	void resume(GameContainer gc, StateBasedGame game) {
 		gc.resume();
-		game.enterState(1);
+//		game.enterState(1);
+		((GameController)gc).changeState("play");
 	}
 	
 	void gameOver(GameContainer gc, Game sbg) {
 		save(sbg);
 		gc.setMinimumLogicUpdateInterval(1000); 
 		sbg.setGameOverMessage(status);
-		sbg.enterState(sbg.gameover);	
+//		sbg.enterState(sbg.gameover);	
+		((GameController)gc).changeState("gameover");
 	}
 	
 	void save(Game sbg){

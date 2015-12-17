@@ -5,7 +5,10 @@ import javagame.Common.ItemType;
 
 /*
  * Factory design pattern
+ * Note: This class is not effectively used right now. In the future, there could be creating Interactable dynamically
+ * (in game) or creating for Database. This class would be good in switching between creating algorithms.
  */
+
 
 public class InteractableFactory {
 	
@@ -50,7 +53,6 @@ public class InteractableFactory {
 	}
 	
 	public Interactable createLockedInteractable(String name, String desc){ 
-//		Interactable inte = createUnlockedInteractable()
 		return createInteractable(name, desc, InteractableType.LOCKED, true);
 	}
 	
@@ -69,19 +71,15 @@ public class InteractableFactory {
 		Item item = null;
 		int currentItem = 1;
 		while(currentItem <= Integer.parseInt(map.getTileProperty(tileID, "itemNumber", "false"))) {
-			System.out.println("unlockedintteyim");
 			String curItem = map.getTileProperty(tileID, "item"+currentItem, "false");
 			if(curItem.contains("healthp")){
 				item = itemFactory.createHealthPotion();
-				System.out.println("health potion oluþturdum");
 			}
 			else if(curItem.contains("diary")){
 				item = itemFactory.createObjectiveItem("diary");
-				System.out.println("diary oluþturdum");
 			}
 			else if (curItem.contains("key")){
 				item = itemFactory.createKey();
-				System.out.println("key oluþturdum");
 			}
 			inte.addItem(item);
 			currentItem++;

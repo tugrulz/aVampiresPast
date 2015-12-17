@@ -147,44 +147,4 @@ public class MapControl {
 		return this.map;
 	}
 	
-	
-	/*public boolean loadMap(int id){
-		map = new Map();
-		colliders = decoder.decode(loc+"map"+id+".txt");
-		System.out.println("DIM " + map.h+" "+map.w);
-		
-		for(int i = 0; i < map.h; i++) {
-			for (int j = 0; j < map.w; j++) {
-				System.out.print(colliders[i][j] + " ");
-			}
-			System.out.println();
-		}
-		
-		return true;
-		//colliders = new boolean[map.MAP_HEIGHT][map.MAP_WIDTH];
-		//for(int i = 0; i < map.MAP_HEIGHT; i++) {
-//			for (int j = 0; j < map.MAP_WIDTH; j++) {
-//				
-//			}
-//		}//
-	}
-	
-	public int findGridID(float posX, float posY) {
-		int rowNo = (int)posX / map.GRID_DIM;
-		int colNo = (int)posY / map.GRID_DIM;
-		return map.w*colNo + rowNo;
-	}
-	
-	public boolean canMove(int direction, float posX, float posY ) {
-		// Chesstable
-		int posGrid = findGridID(posX, posY);
-		int posGridX = posGrid % map.w;
-		int posGridY = posGrid / map.w;
-		if (colliders[posGridX + direction/10][posGridY + direction % 10] == 1){
-			return true;
-		}
-		else
-			return false;
-	}*/
-	
 }

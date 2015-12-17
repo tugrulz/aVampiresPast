@@ -5,6 +5,8 @@ import org.lwjgl.input.*;
 import org.newdawn.slick.*;
 import org.newdawn.slick.state.*;
 
+import javagame.Game;
+
 /**
  * @author Tuðrulcan
  * Help Screen
@@ -31,13 +33,13 @@ public class HelpScreen extends BasicGameState{
 	
 	// Updates images (for animations etc.)
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		/*
-		 * If backButton.isCliked()
-		 *     sbg.enterState(0); // Menuye geri dön.
-		 */
+		listenInput(gc, sbg, delta);
+	}
+	
+	public void listenInput(GameContainer gc, StateBasedGame sbg, int delta){
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_ENTER)) {
-			sbg.enterState(((Game)sbg).prevState);
+			((GameController)gc).changeState(((Game)sbg).prevState);
 		}
 	}
 	

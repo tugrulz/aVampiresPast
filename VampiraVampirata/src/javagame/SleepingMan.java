@@ -79,9 +79,9 @@ public class SleepingMan extends Moving {
 
 	public void setChecked(boolean checked) {
 		this.checked = checked;
-				setChanged();
-				notifyObservers();
-				clearChanged();;
+		setChanged();
+		notifyObservers();
+		clearChanged();;
 	}
 	
 	

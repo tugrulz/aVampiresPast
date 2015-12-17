@@ -57,9 +57,7 @@ public class SleepingManView extends MovingView{
 	}
 	
 	public void draw() throws SlickException {
-		if (currentAnim == null)
-			System.out.println("null lan bu");
-		else if (obj != null)
+		if (obj != null && currentAnim != null)
 			currentAnim.draw(obj.posX, obj.posY);
 	}
 	
@@ -68,19 +66,19 @@ public class SleepingManView extends MovingView{
 	}
 	
 	public void setAwakeAnimation(){
-		// currentAnim = ...
+		currentAnim = animList[obj.getMovingDirection().ordinal()];
 	}
 	
 	public void update(Observable obs, Object arg) {
 		// TODO Auto-generated method stub
 		if (obs instanceof SleepingMan) {
-			//System.out.println("Notifylandým");
+
 			obj = (Moving) obs;
 			if (((SleepingMan)obj).isSleeping()){
 				this.setSleepingAnimation();
 			}
 			else
-				currentAnim = animList[obj.getMovingDirection().ordinal()];
+				this.setAwakeAnimation();
 			//draw();
 			
 		}

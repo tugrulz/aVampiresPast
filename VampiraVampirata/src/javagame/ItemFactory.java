@@ -5,8 +5,8 @@ import org.newdawn.slick.Image;
 import javagame.Common.ItemType;
 /*
  * This class uses Design pattern "Factory Pattern"
- * It takes the string and creates relative item according to the string (sets its name, sets its graphics, sets its type and effect)
- * This class seems needless right now
+ * Note: This class is not effectively used right now. In the future, there could be creating Interactable dynamically
+ * (in game) or creating for Database. This class would be good in switching between creating algorithms.
  */
 //TRASAH
 public class ItemFactory {
@@ -21,7 +21,6 @@ public class ItemFactory {
 	// Creates by loading from map
 	public Item createItemAt(int i, int j) { 
 		int tileID = map.getTileId(i, j, map.LAYER_ID_COL); // j is row number and also x coordinate
-		// O TILEDAKI ITEMA GÖRE CREATE FONKSÝYONU ÇAÐIRACAK.
 		return createItem(map.getTileProperty(tileID, "ItemName", "false"), "", ItemType.POTION, 0); //EDITLENECEK
 	}
 	
@@ -44,17 +43,6 @@ public class ItemFactory {
 		return new HealthP();
 	}
 	
-	
-	
-	public Item createPotion(String name, String desc){ 
-//		Item potion = new Item()
-		return null;
-	}
-	
-	public Item createFreezer(){
-		return null;
-	}
-	
 	public Item createKey(){
 		Item item = new Item("key");
 		item.setType(ItemType.KEY);
@@ -62,5 +50,11 @@ public class ItemFactory {
 		
 		return item;
 	}
+	
+	public Item createFreezer(){
+		return null;
+	}
+	
+
 	
 }

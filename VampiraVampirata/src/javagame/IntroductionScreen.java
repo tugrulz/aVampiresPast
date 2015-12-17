@@ -35,11 +35,10 @@ public class IntroductionScreen extends BasicGameState{
 	
 	// Updates images (for animations etc.)
 	public void update(GameContainer gc, StateBasedGame sbg, int delta) throws SlickException {
-		/*
-		 * If continueButton.isCliked()
-		 *     sbg.enterState(0); // Menuye geri dön.
-		 */
-//		setIntroductionImage(((Game)sbg).getLevel());
+		listenInput(gc, sbg, delta);
+	}
+	
+	public void listenInput(GameContainer gc, StateBasedGame sbg, int delta){
 		Input input = gc.getInput();
 		if (input.isKeyDown(Input.KEY_ENTER)) {
 			sbg.enterState(1);

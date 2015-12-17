@@ -45,7 +45,6 @@ public class MusicManager implements Observer{
 		// TODO Auto-generated method stub
 		if (options instanceof OptionsData) {
 			msc.setVolume((((OptionsData)options).volume)*0.01f);
-			System.out.println("observeoldum");
 		}
 	}
 }

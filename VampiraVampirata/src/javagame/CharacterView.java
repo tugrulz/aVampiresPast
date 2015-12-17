@@ -47,16 +47,10 @@ public class CharacterView extends MovingView {
 		for (int i = 0; i < animList.length; i++) {
 			animList[i].setAutoUpdate(true);
 		}
-		//super.setDefault(movingDown);
-		//currentAnim = movingDown;		
 	}
 	
 	public void draw() throws SlickException {
-		
-		//super.draw();
-		if (currentAnim == null)
-			System.out.println("null lan bu");
-		else {
+		if (currentAnim != null) {
 			currentAnim.draw(obj.posX, obj.posY);
 		}
 			

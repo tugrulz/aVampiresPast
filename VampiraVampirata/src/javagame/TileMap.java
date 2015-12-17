@@ -43,7 +43,6 @@ public class TileMap extends TiledMap {
 		items = new ItemFactory(this);
 		interactables = new InteractableFactory(this);
 		noise = new float[this.getWidth()][this.getHeight()];
-		//System.out.println(this.getHeight() + " " + this.getWidth());
 		loadColliders();
 		loadInteractables();
 		loadNoise();
@@ -76,13 +75,11 @@ public class TileMap extends TiledMap {
 		if (i < this.getWidth() && j < this.getHeight() && i >= 0 && j >= 0) {
 			noise[i][j] += amount;
 			if (noise[i][j] < 0) noise[i][j] = 0f;
-			if (amount >4) System.out.println("Noise on " + i + " " + j + " is now " + noise[i][j]);	
 		}
 	}
 	
 
 	public Interactable getInteractable(int i, int j) {
-		System.out.println("interactabl'ý yakala");
 		return (interactableTiles[i][j]);
 	}
 	
@@ -119,7 +116,6 @@ public class TileMap extends TiledMap {
 	// Detects and returns collidability for a single time
 	public boolean detectCollidable(int i, int j) { 
 		int tileID = this.getTileId(i, j, LAYER_ID_COL); // j is row number and also x coordinate
-		//System.out.println(tileID);
 		String value = getTileProperty(tileID, "collidable", "false"); //"false" is the default value
 		return (value.equals("true"));
 	}
@@ -128,61 +124,5 @@ public class TileMap extends TiledMap {
 	public boolean isMovable(int i, int j) {
 		return collidableTiles[i][j];
 	}
-	
-	/***************** TRASHHHHHHHHHHHHHHHHHH*************/
-	
-	/**
-	 * Get the width of the tile map. The slightly odd name is used
-	 * to distiguish this method from commonly used names in game maps.
-	 * 
-	 * @return The number of tiles across the map
-	 */
-//	public int getWidthInTiles() {
-//		return this.getWidth()/this.getTileWidth();
-//	}
-
-	/**
-	 * Get the height of the tile map. The slightly odd name is used
-	 * to distiguish this method from commonly used names in game maps.
-	 * 
-	 * @return The number of tiles down the map
-	 */
-//	public int getHeightInTiles(){
-//		return this.getHeight()/this.getTileHeight();
-//	}
-	
-	/**
-	 * Notification that the path finder visited a given tile. This is 
-	 * used for debugging new heuristics.
-	 * 
-	 * @param x The x coordinate of the tile that was visited
-	 * @param y The y coordinate of the tile that was visited
-	 */
-//	public void pathFinderVisited(int x, int y){}
-	
-	/**
-	 * Check if the given location is blocked, i.e. blocks movement of 
-	 * the supplied mover.
-	 * 
-	 * @param context The context describing the pathfinding at the time of this request
-	 * @param tx The x coordinate of the tile we're moving to
-	 * @param ty The y coordinate of the tile we're moving to
-	 * @return True if the location is blocked
-	 */
-//	public boolean blocked(PathFindingContext context, int tx, int ty){return false;}
-	
-	/**
-	 * Get the cost of moving through the given tile. This can be used to 
-	 * make certain areas more desirable. A simple and valid implementation
-	 * of this method would be to return 1 in all cases.
-	 * 
-	 * @param context The context describing the pathfinding at the time of this request
-	 * @param tx The x coordinate of the tile we're moving to
-	 * @param ty The y coordinate of the tile we're moving to
-	 * @return The relative cost of moving across the given tile
-	 */
-//	public float getCost(PathFindingContext context, int tx, int ty){return 0;}
-	
-	
 	
 }

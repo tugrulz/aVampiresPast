@@ -6,14 +6,17 @@ import java.util.Observer;
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
+
+// GameController calls render() and update() methods of the current state
+// GameController holds the interpretation of input, but every state has different set of input so different listenInput() method
+
 public class GameController extends AppGameContainer implements Observer {
 
 	public GameController( Game game) throws SlickException{
 			super(game);
 	}
+
 	
-	// This function won't be used because we cannot change the library
-	// And library takes game as input instead of game controller
 	public void changeState(String state) {
 		Game conv = (Game) game; // To fix the clash between game interface and game class
 		if (state.equals("menu"))
@@ -26,6 +29,15 @@ public class GameController extends AppGameContainer implements Observer {
 			conv.enterState(3);
 		if (state.equals("introduction"))
 			conv.enterState(4);
+		if (state.equals("pause"))
+			conv.enterState(5);
+		if (state.equals("gameover"))
+			conv.enterState(6);
+	}
+	
+	public void changeState(int state) {
+		Game conv = (Game) game; // To fix the clash between game interface and game class
+		conv.enterState(state);
 	}
 	
 	public static void main(String[] args) {

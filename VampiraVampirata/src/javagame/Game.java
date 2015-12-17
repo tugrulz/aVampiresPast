@@ -1,21 +1,18 @@
 package javagame;
 
-import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.GameContainer;
-import org.newdawn.slick.Image;
+import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 
 
 //MASTER CLASS
-//Bu classýn viewý yok, sadece model. Ama view classlarý gibi observe yapýyor çünkü kendi datasýný optionsdataya göre deðiþtirmesi gerek
-
-
+// Possible problem: It cannot extend SBG and Observable at once
 public class Game extends StateBasedGame implements Observer{
 	
 	// Properties
@@ -107,11 +104,32 @@ public class Game extends StateBasedGame implements Observer{
 			
 		}catch(SlickException e){
 			e.printStackTrace();
-			System.out.println("açýlmýyo");
+			System.out.println("Not opening");
 		}
 		
 
 	}
+	
+	/*
+	public final void render(GameContainer container, Graphics g) throws SlickException {
+		preRenderState(container, g);
+		
+		if (leaveTransition != null) {
+			leaveTransition.preRender(this, container, g);
+		} else if (enterTransition != null) {
+			enterTransition.preRender(this, container, g);
+		}
+		
+		currentState.render(container, this, g);
+		
+		if (leaveTransition != null) {
+			leaveTransition.postRender(this, container, g);
+		} else if (enterTransition != null) {
+			enterTransition.postRender(this, container, g);
+		}
+		
+		postRenderState(container, g);
+	}*/
 	
 	// GET SET TRASH
 	public boolean isFullscreen() {

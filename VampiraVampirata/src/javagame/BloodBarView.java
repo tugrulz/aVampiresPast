@@ -14,7 +14,7 @@ public class BloodBarView implements Observer, OnScreen{
 	Graphics g;
 	final int POS_Y = 50;
 	final int POS_X = 620;
-	float newPosY; // This will change to give decrase effect.
+	float newPosY; // This will change to give decrease effect.
 	boolean noGraphics;
 	
 	Character obj;
@@ -35,16 +35,6 @@ public class BloodBarView implements Observer, OnScreen{
 			g.fillRect(POS_X, newPosY, 10, obj.getBlood());
 			g.setColor(Color.white);
 		}
-	}
-	
-	
-	public void draw(Graphics g) throws SlickException {
-		this.g = g;
-		g.drawRect(POS_X, 50, 10, obj.BLOOD_MAX);
-		g.setColor(Color.red);
-		g.fillRect(POS_X, newPosY, 10, obj.getBlood());
-		g.setColor(Color.white);
-		
 	}
 	
 	@Override

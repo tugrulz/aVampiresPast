@@ -31,7 +31,6 @@ public class Character extends Moving {
 	
 	public void setRandomTalk() {
 		int rand = (int)(Math.random()*10 + 1);
-		System.out.print("Deneme" + rand);
 		switch (rand) {
         case 1:  talk = "Only Van Helsing can hunt me.";
         break;
@@ -104,23 +103,6 @@ public class Character extends Moving {
 		return catched;
 	}
 	
-	/*public void increaseNoise(float change) {
-		noise += change;
-		
-		setChanged();
-		notifyObservers();
-		clearChanged();
-	}
-	
-	public void decreaseNoise(float change) {
-		noise += change;
-		
-		setChanged();
-		notifyObservers();
-		clearChanged();
-	}*/
-	
-	
 	
 	// INVENTORY IS A SUBCLASS OF CHARACTER CLASS AND ONLY MANIPULATED BY CHARACTER CONTROLLER
 	// INVENTORYVIEW IS AN OBSERVER TO CHARACTER CLASS
@@ -142,7 +124,6 @@ public class Character extends Moving {
 		}
 		
 		public boolean addItem(Item i){
-			System.out.println(i.name + "eklenecek");
 			current++;
 			boolean changed = itemList.add(i);
 			if (changed)

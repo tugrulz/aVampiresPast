@@ -24,9 +24,7 @@ public class CharacterProfileView implements Observer, OnScreen {
 	
 	public CharacterProfileView() throws SlickException{
 		face = new Image("res/vampire/vampireFace.jpg");
-		System.out.println("bu niye çalýþmýyo");
-		//face = new Image("res/vampire/vampireFace.jpg");
-		//current = face;
+		current = face;
 	}
 	
 	public void setGraphics(Graphics g) {
@@ -36,7 +34,7 @@ public class CharacterProfileView implements Observer, OnScreen {
 	
 	public void draw() {
 		if (g == null)
-			System.out.println("graphics null þu anda");
+			System.out.println("Graphics is null");
 		else
 			g.drawImage(this.face, 45, 409, Color.lightGray);
 	}
@@ -52,8 +50,8 @@ public class CharacterProfileView implements Observer, OnScreen {
 		// TODO Auto-generated method stub
 		if (obs instanceof Character && g != null && this.face == null) {
 			obj = (Character)obs;
+//			this.setMoodImage();
 //			draw(); Does not work
-//			g.drawImage(this.face, 50, 250, Color.lightGray);
 		}
 	}
 

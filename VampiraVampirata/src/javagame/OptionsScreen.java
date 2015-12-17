@@ -7,7 +7,7 @@ import org.newdawn.slick.state.*;
 
 /**
  * @author Tuðrulcan
- * Main Menu
+ * 
  */
 public class OptionsScreen extends BasicGameState{
 	
@@ -89,7 +89,9 @@ public class OptionsScreen extends BasicGameState{
 			control.changeBrightness(-5);
 		}
 		else if (input.isKeyDown(Input.KEY_ENTER)){
-			sbg.enterState(((Game)sbg).prevState);
+			((GameController)gc).changeState("pause");
+//			sbg.enterState(((Game)sbg).prevState);
+			((GameController)gc).changeState(((Game)sbg).prevState);
 		}
 	}
 	

@@ -21,7 +21,7 @@ public class SleepingManController extends MovingController {
 				try {
 					Common.msc.playManAwake();
 				} catch (SlickException e) {
-					System.out.println("could not play");
+					System.out.println("Could not play");
 				}
 			}
 		}
@@ -35,7 +35,7 @@ public class SleepingManController extends MovingController {
 			try {
 				Common.msc.playMainGameMusic();
 			} catch (SlickException e) {
-				System.out.println("could not play");
+				System.out.println("Could not play");
 			}
 
 		}
@@ -50,15 +50,12 @@ public class SleepingManController extends MovingController {
 			
 			Direction dir = obj.getMovingDirection();
 			if (dir == Direction.LEFT) {
-				System.out.println("hanimiþ benim vampirsdsdsdim spcon");
 				if (obj.getPosFeetX() - vamp.getPosFeetX() < ((SleepingMan)obj).getSight() && checkPlayerY(vamp)) {
-					System.out.println("sobe");
 					catchPlayer(vamp);
 				}
 					
 			}
 			else if (dir == Direction.LEFT) {
-//				System.out.println("hanimiþ benim vampirim spcon");
 				if (vamp.getPosFeetX() - obj.getPosFeetX()  < ((SleepingMan)obj).getSight() && checkPlayerY(vamp) )
 					catchPlayer(vamp);
 			}

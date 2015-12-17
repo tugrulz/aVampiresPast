@@ -44,14 +44,7 @@ public class Item {
 	
 	
 
-	public void useItem(Character charUsing){
-		// Will depend on the item type
-		// Ýki tane seçenek var:
-		/*
-		 * 1. Bu class abstract olacak, her item türü için class açýp useItem fonk. yazacaðým
-		 * 2. Buraya typelara göre tek tek charactere ne olacaðýný yazacaðým.
-		 */
-	}
+	public void useItem(Character charUsing){} // No default action
 	
 	// GET SET TRASH
 	public int getPower() {

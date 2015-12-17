@@ -69,7 +69,7 @@ public class PauseMenu extends BasicGameState {
 			if ((xpos>280 && xpos<340)&&(ypos> 140 && ypos < 190)){
 				exit = "Exit!";
 				if (input.isMouseButtonDown(0)){
-					System.exit(0);
+					this.exit(gc);
 				}
 			}
 			else
@@ -78,8 +78,7 @@ public class PauseMenu extends BasicGameState {
 			if ((xpos>280 && xpos<400)&&(ypos> 310 && ypos < 340)){
 				cont = "Continue!";
 				if (input.isMouseButtonDown(0)){
-					sbg.enterState(1);
-					((Game)sbg).control.resume();
+					resume(gc);
 				}
 			}
 			else
@@ -89,7 +88,7 @@ public class PauseMenu extends BasicGameState {
 				options = "Options!";
 				if (input.isMouseButtonDown(0)){
 					((Game)sbg).prevState = 5;
-					sbg.enterState(2);
+					options(gc);
 //					Common.msc.playOptionsMusic();
 				}
 			}
@@ -101,7 +100,7 @@ public class PauseMenu extends BasicGameState {
 				((Game)sbg).prevState = 0;
 				if (input.isMouseButtonDown(0)){
 					((Game)sbg).prevState = 5;
-					sbg.enterState(3);
+					help(gc);
 				}
 			}
 			else
@@ -112,20 +111,21 @@ public class PauseMenu extends BasicGameState {
 			return 5; // Menu's id is set as 0 in Game
 		}
 		
-		public void resume(StateBasedGame sbg) {
-			
+		public void resume(GameContainer gc) {
+			((GameController)gc).changeState(1);
+			((GameController)gc).resume();
 		}
 		
-		public void options(StateBasedGame sbg) {
-			
+		public void options(GameContainer gc) {
+			((GameController)gc).changeState(2);
 		}
 		
-		public void help(StateBasedGame sbg) {
-			
+		public void help(GameContainer gc) {
+			((GameController)gc).changeState(3);
 		}
 		
-		public void exit() {
-			System.exit(0);
+		public void exit(GameContainer gc) {
+			gc.exit();
 		}
 		
 }

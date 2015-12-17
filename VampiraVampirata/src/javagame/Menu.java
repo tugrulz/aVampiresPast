@@ -71,7 +71,8 @@ public class Menu extends BasicGameState{
 		if ((xpos>280 && xpos<340)&&(ypos> 350 && ypos < 380)){
 			mouse = "Play!";
 			if (input.isMouseButtonDown(0)){
-				sbg.enterState(4);
+//				sbg.enterState(4);
+				((GameController)gc).changeState("introduction");
 				Common.msc.playMainGameMusic();
 			}
 		}
@@ -93,7 +94,8 @@ public class Menu extends BasicGameState{
 		if ((xpos>280 && xpos<400)&&(ypos> 310 && ypos < 340)){
 			cont = "Continue!";
 			if (input.isMouseButtonDown(0)){
-				sbg.enterState(4);
+//				sbg.enterState(4);
+				((GameController)gc).changeState("introduction");
 				Common.msc.playMainGameMusic();
 			}
 		}
@@ -104,7 +106,8 @@ public class Menu extends BasicGameState{
 			options = "Options!";
 			if (input.isMouseButtonDown(0)){
 				((Game)sbg).prevState = 0;
-				sbg.enterState(2);
+//				sbg.enterState(2);
+				((GameController)gc).changeState("options");
 //				Common.msc.playOptionsMusic();
 			}
 		}
@@ -116,7 +119,8 @@ public class Menu extends BasicGameState{
 			((Game)sbg).prevState = 0;
 			if (input.isMouseButtonDown(0)){
 				((Game)sbg).prevState = 0;
-				sbg.enterState(3);
+//				sbg.enterState(3);
+				((GameController)gc).changeState("help");
 //				Common.msc.playOptionsMusic();
 			}
 		}
