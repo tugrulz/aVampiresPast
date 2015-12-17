@@ -1,5 +1,6 @@
 package javagame;
 import org.newdawn.slick.Image;
+import org.newdawn.slick.SlickException;
 
 import javagame.Common.ItemType;
 
@@ -11,11 +12,18 @@ public class Item {
 	String desc; // What character says about it.
 	ItemType type;
 	boolean consumable;
-	
+	String path = "res/";
+	String p = ".png";
 	Image itemIcon;
 	
 	public Item(String name) {
 		this.name = name;
+		try {
+			itemIcon = new Image(path+name+p);
+		} catch (SlickException e) {
+			
+		}
+		consumable = true;
 	}
 	
 	public Item(String name, String desc, ItemType type, int power) {
@@ -33,6 +41,8 @@ public class Item {
 		this.type = type;
 		this.consumable = consumable;
 	}
+	
+	
 
 	public void useItem(Character charUsing){
 		// Will depend on the item type
@@ -82,6 +92,14 @@ public class Item {
 
 	public void setConsumable(boolean consumable) {
 		this.consumable = consumable;
+	}
+
+	public Image getItemIcon() {
+		return itemIcon;
+	}
+
+	public void setItemIcon(Image itemIcon) {
+		this.itemIcon = itemIcon;
 	}
 	
 	

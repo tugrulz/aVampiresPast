@@ -30,8 +30,10 @@ public class InteractableFactory {
 			else if (map.getTileProperty(tileID, "type", "false").equals("OPEN")){
 				return createUnLockedInteractable(map, tileID);
 			}
+			else if (map.getTileProperty(tileID, "type", "false").equals("LOCKED"))
+				return createLockedInteractable(map, tileID);
 			else
-				return null;
+					return null;
 		}
 		else
 			return null;
@@ -48,7 +50,14 @@ public class InteractableFactory {
 	}
 	
 	public Interactable createLockedInteractable(String name, String desc){ 
+//		Interactable inte = createUnlockedInteractable()
 		return createInteractable(name, desc, InteractableType.LOCKED, true);
+	}
+	
+	public Interactable createLockedInteractable(TileMap map, int tileID){ 
+		Interactable inte = createUnLockedInteractable(map, tileID);
+		inte.setType(InteractableType.LOCKED);
+		return inte;
 	}
 	
 	public Interactable createUnLockedInteractable(String name, String desc){ 
@@ -56,6 +65,7 @@ public class InteractableFactory {
 	}
 	
 	public Interactable createUnLockedInteractable(TileMap map, int tileID){ 
+		Interactable inte = new Interactable(map.getTileProperty(tileID, "charTalk", "false"), InteractableType.OPEN);
 		Item item = null;
 		int currentItem = 1;
 		while(currentItem <= Integer.parseInt(map.getTileProperty(tileID, "itemNumber", "false"))) {
@@ -65,10 +75,17 @@ public class InteractableFactory {
 				item = itemFactory.createHealthPotion();
 				System.out.println("health potion oluþturdum");
 			}
+			else if(curItem.contains("diary")){
+				item = itemFactory.createObjectiveItem("diary");
+				System.out.println("diary oluþturdum");
+			}
+			else if (curItem.contains("key")){
+				item = itemFactory.createKey();
+				System.out.println("key oluþturdum");
+			}
+			inte.addItem(item);
 			currentItem++;
 		}
-		Interactable inte = new Interactable(map.getTileProperty(tileID, "charTalk", "false"), InteractableType.OPEN);
-		inte.addItem(item);
 		return inte;
 	}
 	

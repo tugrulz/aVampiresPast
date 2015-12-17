@@ -65,6 +65,57 @@ public class Interactable {
 			return inside.remove(i);
 
 	}
+
+	public ArrayList<Item> getInside() {
+		return inside;
+	}
+
+	public void setInside(ArrayList<Item> inside) {
+		this.inside = inside;
+	}
+
+	public boolean isLocked() {
+		return locked;
+	}
+
+	public void setLocked(boolean locked) {
+		this.locked = locked;
+	}
+
+	public boolean isInteracted() {
+		return interacted;
+	}
+
+	public void setInteracted(boolean interacted) {
+		this.interacted = interacted;
+	}
+
+	public String getCharTalk() {
+		return charTalk;
+	}
+
+	public void setCharTalk(String charTalk) {
+		this.charTalk = charTalk;
+	}
+
+	public String getAfterTalk() {
+		return afterTalk;
+	}
+
+	public void setAfterTalk(String afterTalk) {
+		this.afterTalk = afterTalk;
+	}
+
+	public InteractableType getType() {
+		return type;
+	}
+
+	public void setType(InteractableType type) {
+		this.type = type;
+	}
+	
+	
+	
 	
 	
 

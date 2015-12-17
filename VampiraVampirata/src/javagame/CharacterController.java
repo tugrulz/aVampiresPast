@@ -20,8 +20,19 @@ public class CharacterController extends MovingController {
 			}
 			else if (ref.type == InteractableType.OPEN){
 				takeItems(ref);
+				((Character)obj).talk = ref.charTalk;
+			}
+			else if (ref.type == InteractableType.LOCKED){
+				if (((Character)obj).inventory.containsKey() >= 0){
+					((Character)obj).inventory.takeItem(((Character)obj).inventory.containsKey());
+					takeItems(ref);
+				}
+				else 
+					((Character)obj).talk = "I don't have the key.";
 			}
 		}
+		else
+			((Character)obj).talk = "Nothing to do here.";
 	}
 	
 	public void decreaseBlood(float change){
@@ -36,11 +47,19 @@ public class CharacterController extends MovingController {
 				Item i;
 				do {
 					i = container.giveItem(0);
-					System.out.println(i.name + " alýcam");
-					notFull = ((Character)obj).inventory.addItem(i);
+					if (i!= null ) {
+						System.out.println(i.name + " alýcam");
+						notFull = ((Character)obj).inventory.addItem(i);
+					}
 				} while (i != null && notFull);
 			}
 //		}
+	}
+	
+	public boolean doesHaveObjective() {
+		if (((Character)obj).inventory.containsObjective() > 0)
+			((Character)obj).setHasObjectiveItem(true);
+		return ((Character)obj).hasObjectiveItem();
 	}
 	
 	public void useItem(int index){ // BUNA Bi DiZAYN PATTERN UYDURMAK GEREK
@@ -58,4 +77,6 @@ public class CharacterController extends MovingController {
 		else
 			System.out.println("Cannot use");
 	}
+	
+	
 }

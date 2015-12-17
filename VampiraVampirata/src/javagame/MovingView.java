@@ -37,12 +37,16 @@ public class MovingView implements java.util.Observer {
 	@Override
 	public void update(Observable obs, Object arg) {
 		// TODO Auto-generated method stub
+//		if ( (obs instanceof Moving) && arg instanceof Float ) {
+//			float delta= (Float)arg;
+//			currentAnim.update((long)delta);
+//		}
 		if (obs instanceof Moving) {
 			//System.out.println("Notifylandým");
 			obj = (Moving) obs;
 			currentAnim = animList[obj.getMovingDirection().ordinal()];
+			currentAnim.draw();
 			//draw();
-			
 		}
 		
 	}

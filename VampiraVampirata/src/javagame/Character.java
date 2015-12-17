@@ -2,6 +2,8 @@ package javagame;
 
 import java.util.ArrayList;
 
+import javagame.Common.ItemType;
+
 public class Character extends Moving {
 	
 	// VARIABLES
@@ -55,17 +57,34 @@ public class Character extends Moving {
 		
 	}
 
+	
+	
+	public void setCatched(boolean catched) {
+		this.catched = catched;
+	}
+
+	public boolean hasObjectiveItem() {
+		return hasObjectiveItem;
+	}
+
+	public void setHasObjectiveItem(boolean hasObjectiveItem) {
+		this.hasObjectiveItem = hasObjectiveItem;
+	}
+
 	public float getBlood() {
 		return blood;
 	}
 
-	public void setBlood(float blood) {
-		this.blood = blood;
+	public void setBlood(float bl) {
+		if (bl < 0 ) bl = 0;
+		else if (bl>400) bl = 400;
+		this.blood = bl;
 	}
 	
 	public void decreaseBlood(float change) {
 		blood -= change;
-		
+		if (blood < 0) blood = 0;
+		if (blood > 400) blood =400;
 		setChanged();
 		notifyObservers();
 		clearChanged();
@@ -73,7 +92,8 @@ public class Character extends Moving {
 	
 	public void increaseBlood(float change) {
 		blood += change;
-		
+		if (blood > 400) blood = 400;
+		if (blood < 0) blood = 0;
 		setChanged();
 		notifyObservers();
 		clearChanged();
@@ -81,8 +101,26 @@ public class Character extends Moving {
 	
 	public boolean isCatched() {
 		// TODO Auto-generated method stub
-		return false;
+		return catched;
 	}
+	
+	/*public void increaseNoise(float change) {
+		noise += change;
+		
+		setChanged();
+		notifyObservers();
+		clearChanged();
+	}
+	
+	public void decreaseNoise(float change) {
+		noise += change;
+		
+		setChanged();
+		notifyObservers();
+		clearChanged();
+	}*/
+	
+	
 	
 	// INVENTORY IS A SUBCLASS OF CHARACTER CLASS AND ONLY MANIPULATED BY CHARACTER CONTROLLER
 	// INVENTORYVIEW IS AN OBSERVER TO CHARACTER CLASS
@@ -105,6 +143,7 @@ public class Character extends Moving {
 		
 		public boolean addItem(Item i){
 			System.out.println(i.name + "eklenecek");
+			current++;
 			boolean changed = itemList.add(i);
 			if (changed)
 				notifyObservers();
@@ -126,6 +165,24 @@ public class Character extends Moving {
 			notifyObservers();
 			return returned;
 		}
+		
+		public int containsKey() {
+			for (int i=0; i < itemList.size(); i++) {
+				if (itemList.get(i).getType() == ItemType.KEY)
+					return i;
+			}
+			return -1;
+		}
+		
+		public int containsObjective() {
+			for (int i=0; i < itemList.size(); i++) {
+				if (itemList.get(i).getType() == ItemType.OBJ)
+					return i;
+			}
+			return -1;
+		}
+		
+		
 		
 		
 		

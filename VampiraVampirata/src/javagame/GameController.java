@@ -1,9 +1,12 @@
 package javagame;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import org.newdawn.slick.AppGameContainer;
 import org.newdawn.slick.SlickException;
 
-public class GameController extends AppGameContainer {
+public class GameController extends AppGameContainer implements Observer {
 
 	public GameController( Game game) throws SlickException{
 			super(game);
@@ -28,6 +31,18 @@ public class GameController extends AppGameContainer {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		// TODO Auto-generated method stub
+		if (o instanceof OptionsData) {
+			try {
+				this.setDisplayMode(((Game)game).getWidth(),((Game)game).getHeight(), ((OptionsData)o).isFullscreen());
+			} catch (SlickException e) {
+				System.out.println("Could not set fullscreen");
+			}
+		}
 	}
 
 }

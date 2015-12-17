@@ -36,6 +36,10 @@ public class MovingController {
 			System.out.println("The player cannot move right now.");
 	}
 	
+	public void idle(){
+		obj.setMovingDirection(Direction.DOWN);
+	}
+	
 	// TRASH
 	/*public void isOffLimits(){
 		

@@ -2,6 +2,9 @@
  * 
  */
 package javagame;
+import java.util.ArrayList;
+import java.util.Collections;
+
 import org.newdawn.slick.SlickException;
 
 import javagame.Common.Direction;
@@ -16,6 +19,8 @@ public class MapControl {
 	//Map map;
 	TileMap map;
 	String loc = "res/mapdata/";
+	float NOISE_MULTIPLIER = 0.5f;
+	float NOISE_MULTIPLIER_Y = 0.5f;
 	//int[][] colliders; // Determines the positions where the character cannot walk
 	
 	// Direction
@@ -59,7 +64,7 @@ public class MapControl {
 		// Change to tile first
 		int i = (int)posX / map.getTileWidth();
 		int j = (int)posY / map.getTileHeight();
-		System.out.println(i + "ve    " + j + "from mapcontrol");
+//		System.out.println(i + "ve    " + j + "from mapcontrol");
 		
 		// Check the upper tile, j-1th tile
 		return (map.doesInteractableExist(i, j-1)); 
@@ -73,6 +78,57 @@ public class MapControl {
 		// Check the upper tile, j-1th tile
 		return (map.getInteractable(i, j-1)); 
 	}
+	
+	public void changeNoise(float posX, float posY, float scale, float amount) {
+		// Change to tile first
+		int i = (int)posX / map.getTileWidth();
+		int j = (int)posY / map.getTileHeight();
+		int neighbourTilesX = (int)scale / map.getTileWidth();
+		int neighbourTilesY = (int)scale / map.getTileHeight();
+		
+		map.changeNoise(i, j, amount);
+		for (int a = 1; a <= neighbourTilesX; a++) {
+			map.changeNoise(i+a, j, amount*(float)Math.pow(NOISE_MULTIPLIER, a));
+			map.changeNoise(i-a, j, amount*(float)Math.pow(NOISE_MULTIPLIER, a));
+			
+		}
+		for (int b = 1; b <= neighbourTilesY; b++) {
+			map.changeNoise(i, j+b, amount*(float)Math.pow(NOISE_MULTIPLIER_Y, b));
+			map.changeNoise(i, j-b, amount*(float)Math.pow(NOISE_MULTIPLIER_Y, b));
+		}
+	}
+	
+	public void updateNoise(float delta) {
+		for (int i = 0; i< map.getWidth(); i++) {
+			for (int j = 0; j < map.getHeight(); j++) {
+				map.changeNoise(i, j, -delta*0.1f);
+			}
+		}
+	}
+	
+	//multiplier is the hearing efficiency according to tile
+	public float getMaxNoise(float posX, float posY, float scale, float multiplier) {
+		int i = (int)posX / map.getTileWidth();
+		int j = (int)posY / map.getTileHeight();
+		int neighbourTilesX = (int)scale / map.getTileWidth();
+		int neighbourTilesY = (int)scale / map.getTileHeight();
+		
+		
+		ArrayList<Float> noises = new ArrayList<Float>();
+		
+		noises.add(map.getNoise(i, j));
+		for (int a = 1; a <= neighbourTilesX; a++) {
+			noises.add(map.getNoise(i+a, j)*(float)Math.pow(multiplier, a));
+			noises.add(map.getNoise(i-a, j)*(float)Math.pow(multiplier, a));
+		}
+		for (int b = 1; b <= neighbourTilesY; b++) {
+			noises.add(map.getNoise(i, j+b)*(float)Math.pow(multiplier, b*b));
+			noises.add(map.getNoise(i, j-b)*(float)Math.pow(multiplier, b*b));
+		}
+		return Collections.max(noises);
+		
+	}
+	
 	
 	
 	

@@ -53,6 +53,24 @@ public class Moving extends java.util.Observable {
 	}
 	
 	
+	
+	
+	public float getPosFeetX() {
+		return posFeetX;
+	}
+
+	public void setPosFeetX(float posFeetX) {
+		this.posFeetX = posFeetX;
+	}
+
+	public float getPosFeetY() {
+		return posFeetY;
+	}
+
+	public void setPosFeetY(float posFeetY) {
+		this.posFeetY = posFeetY;
+	}
+
 	/*************************************INNER FUNCTIONS*************************************/
 	private void specifyDirection(boolean positive, boolean changeX) {
 		if (changeX) movingDirection = (positive) ? Direction.RIGHT : Direction.LEFT;

@@ -2,6 +2,24 @@
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="27" height="19" tilewidth="24" tileheight="24" nextobjectid="1">
  <tileset firstgid="1" name="mainMap" tilewidth="24" tileheight="24" tilecount="513">
   <image source="mainMap.png" width="648" height="456"/>
+  <tile id="138">
+   <properties>
+    <property name="charTalk" value="Broken.. But something is inside."/>
+    <property name="interactable" value="true"/>
+    <property name="item1" value="key"/>
+    <property name="itemNumber" value="1"/>
+    <property name="type" value="OPEN"/>
+   </properties>
+  </tile>
+  <tile id="152">
+   <properties>
+    <property name="charTalk" value="Maybe there's something I can use."/>
+    <property name="interactable" value="true"/>
+    <property name="item1" value="diary"/>
+    <property name="itemNumber" value="1"/>
+    <property name="type" value="LOCKED"/>
+   </properties>
+  </tile>
   <tile id="164">
    <properties>
     <property name="collidable" value="true"/>
@@ -130,6 +148,13 @@
   <tile id="255">
    <properties>
     <property name="collidable" value="true"/>
+   </properties>
+  </tile>
+  <tile id="277">
+   <properties>
+    <property name="charTalk" value="Wowowowowow. Haram"/>
+    <property name="interactable" value="true"/>
+    <property name="type" value="TALKONLY"/>
    </properties>
   </tile>
   <tile id="282">

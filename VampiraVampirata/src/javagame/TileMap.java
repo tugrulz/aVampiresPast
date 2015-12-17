@@ -30,6 +30,7 @@ public class TileMap extends TiledMap {
 	public Interactable interactableTiles[][]; // This may changed to STRING or int later
 	public Item itemTiles[][]; // This may changed to STRING or InteractableType later
 	final int LAYER_ID_COL = 0; // all collision information are stored in the layer 1 for all maps
+	public float noise[][];
 	
 	ItemFactory items;
 	InteractableFactory interactables;
@@ -41,10 +42,11 @@ public class TileMap extends TiledMap {
 		interactableTiles = new Interactable[this.getWidth()][this.getHeight()];
 		items = new ItemFactory(this);
 		interactables = new InteractableFactory(this);
+		noise = new float[this.getWidth()][this.getHeight()];
 		//System.out.println(this.getHeight() + " " + this.getWidth());
 		loadColliders();
 		loadInteractables();
-		
+		loadNoise();
 	}
 	
 
@@ -59,6 +61,22 @@ public class TileMap extends TiledMap {
 				interactableTiles[i][j] = interactables.createInteractableAt(i,j);
 //				/interactableTiles[i][j] = new Interactable();
 			}
+		}
+	}
+	
+	public void loadNoise(){
+		for (int i = 0; i < collidableTiles.length; i++) {
+			for (int j = 0; j < collidableTiles[i].length; j++) {
+				noise[i][j] = 0;
+			}
+		}
+	}
+	
+	public void changeNoise(int i, int j, float amount){
+		if (i < this.getWidth() && j < this.getHeight() && i >= 0 && j >= 0) {
+			noise[i][j] += amount;
+			if (noise[i][j] < 0) noise[i][j] = 0f;
+			if (amount >4) System.out.println("Noise on " + i + " " + j + " is now " + noise[i][j]);	
 		}
 	}
 	
@@ -77,6 +95,14 @@ public class TileMap extends TiledMap {
 				itemTiles[i][j] = items.createItemAt(i,j);
 			}
 		}
+	}
+	
+	public float getNoise(int i, int j) {
+		if (i < this.getWidth() && j < this.getHeight() && i >= 0 && j >= 0) {
+			return noise[i][j];
+		}
+		else 
+			return 0;
 	}
 	
 	

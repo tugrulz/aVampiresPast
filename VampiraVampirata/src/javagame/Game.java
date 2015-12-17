@@ -26,32 +26,49 @@ public class Game extends StateBasedGame implements Observer{
 	public static final int help = 3;
 	public static final int introduction = 4;
 	public static final int pause = 5;
+	public static final int gameover = 6;
 	
-	public static final int STATE_COUNT = 5;
+	public static final int STATE_COUNT = 7;
 	
 	boolean fullscreen;
 	int width;
 	int height;
 	
+	
 	OptionsData optionsData;
+	GameController control;
 	Music msc;
 	
 	int level;
+	int prevState;
+	String gameOverMessage = "";
 	
 	public Game(String gamename) {
 		super(gamename);
+		optionsData = new OptionsData();
+		optionsData.addObserver(this);
+		optionsData.addObserver(Common.msc);
 		this.addState(new Menu(menu));
 		this.addState(new Play(play));
+		this.addState(new OptionsScreen(options, optionsData));
+		this.addState(new IntroductionScreen());
+		this.addState(new HelpScreen());
+		this.addState(new PauseMenu());
+		this.addState(new GameOverScreen(gameover));
 		fullscreen = false;
 		width = 640;
 		height = 480;
 		level = 0;
+		prevState = 0;
+		
 	}
 	
 	public void initStatesList(GameContainer gc) throws SlickException{
 		// INITIALIZE STATES
 		this.getState(menu).init(gc, this);
 		this.getState(play).init(gc, this);
+		this.getState(introduction).init(gc, this);
+		this.getState(gameover).init(gc, this);
 		// FIRST STATE (SCREEN) WE WILL SEE
 		this.enterState(menu);
 		
@@ -64,6 +81,11 @@ public class Game extends StateBasedGame implements Observer{
 		super.enterState(id);
 	}
 	
+	public void setGameController(GameController appgc) {
+		this.control = appgc;
+		optionsData.addObserver(control);
+	}
+	
 	/**********************************************MAIN FUNCTION**********************************************/
 	public static void main(String[] args) {
 		AppGameContainer appgc;
@@ -71,8 +93,9 @@ public class Game extends StateBasedGame implements Observer{
 		try {
 			// Put the game in appgame container
 			game = new Game(gamename);
-			appgc = new AppGameContainer(game);
-//			appgc = new GameController(game);
+//			appgc = new AppGameContainer(game);
+			appgc = new GameController(game);
+			game.setGameController((GameController)appgc);
 			
 			// Set the size of the window
 			appgc.setDisplayMode(game.getWidth(), game.getHeight(), game.isFullscreen());
@@ -84,6 +107,7 @@ public class Game extends StateBasedGame implements Observer{
 			
 		}catch(SlickException e){
 			e.printStackTrace();
+			System.out.println("açýlmýyo");
 		}
 		
 
@@ -120,6 +144,18 @@ public class Game extends StateBasedGame implements Observer{
 
 	public void setLevel(int level) {
 		this.level = level;
+	}
+	
+	
+
+	public String getGameOverMessage() {
+		return gameOverMessage;
+	}
+
+	public void setGameOverMessage(String gameOverMessage) {
+		this.gameOverMessage = gameOverMessage;
+		GameOverScreen pointer = (GameOverScreen)this.getState(gameover);
+		pointer.setStatus(gameOverMessage);
 	}
 
 	@Override

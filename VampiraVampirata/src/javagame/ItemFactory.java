@@ -1,5 +1,7 @@
 package javagame;
 
+import org.newdawn.slick.Image;
+
 import javagame.Common.ItemType;
 /*
  * This class uses Design pattern "Factory Pattern"
@@ -32,7 +34,8 @@ public class ItemFactory {
 	}
 	
 	public Item createObjectiveItem(String name){ 
-		Item item = new ObjectiveItem(name);
+		Item item = new Item(name);
+		item.setType(ItemType.OBJ);
 		return item;
 	}
 	
@@ -53,7 +56,11 @@ public class ItemFactory {
 	}
 	
 	public Item createKey(){
-		return null;
+		Item item = new Item("key");
+		item.setType(ItemType.KEY);
+		item.setConsumable(false);
+		
+		return item;
 	}
 	
 }

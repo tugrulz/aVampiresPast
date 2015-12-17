@@ -6,6 +6,7 @@ import java.util.Observer;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
+import org.newdawn.slick.geom.Rectangle;
 
 public class BloodBarView implements Observer, OnScreen{
 
@@ -36,12 +37,14 @@ public class BloodBarView implements Observer, OnScreen{
 		}
 	}
 	
+	
 	public void draw(Graphics g) throws SlickException {
 		this.g = g;
 		g.drawRect(POS_X, 50, 10, obj.BLOOD_MAX);
 		g.setColor(Color.red);
 		g.fillRect(POS_X, newPosY, 10, obj.getBlood());
 		g.setColor(Color.white);
+		
 	}
 	
 	@Override
@@ -51,8 +54,7 @@ public class BloodBarView implements Observer, OnScreen{
 			obj = (Character)obs;
 			newPosY = POS_Y + obj.BLOOD_MAX - obj.getBlood();
 			/*try {
-				if (arg1 instanceof Graphics)
-					draw((Graphics)arg1);
+					draw();
 			} catch (SlickException e) {
 				System.out.println("could not draw");
 			}*/

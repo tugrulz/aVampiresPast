@@ -55,8 +55,6 @@ public class CharacterProfileView implements Observer, OnScreen {
 //			draw(); Does not work
 //			g.drawImage(this.face, 50, 250, Color.lightGray);
 		}
-//		else 
-//			System.out.println("face kuçu");
 	}
 
 }

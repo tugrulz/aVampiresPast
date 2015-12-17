@@ -14,7 +14,7 @@ import org.newdawn.slick.state.*;
 public class Menu extends BasicGameState{
 	
 	// VARIABLES
-	int posX = 100 , posY = 100;
+	int posX = 90 , posY = 70;
 	
 	public String mouse = "Play?";
 	public String exit = "Exit?";
@@ -22,6 +22,8 @@ public class Menu extends BasicGameState{
 	// Sonradan eklenecek
 	public String options = "Options";
 	public String help = "Help";
+	
+	public String cont = "Continue";
 	
 	public Menu(int state) {
 		
@@ -33,13 +35,26 @@ public class Menu extends BasicGameState{
 	
 	// Draws stuff on screen
 	public void render(GameContainer gc, StateBasedGame sbg, Graphics g) throws SlickException {
+		// Play button
 		g.drawString(mouse,305,100);
 		g.drawRect(300, 100, 55, 20);
 		g.drawString("y : " + Mouse.getY() + "x : " + Mouse.getX(), 0, 0);
 		
 		// Exit Button
-		g.drawString(exit,305,150);
-		g.drawRect(300, 150, 55, 20);
+		g.drawString(exit,305,300);
+		g.drawRect(300, 300, 55, 20);
+		
+		// Continue Button
+		g.drawString(cont,305,150);
+		g.drawRect(300, 150, 90, 20);
+		
+		// Options Button
+		g.drawString(options,305,200);
+		g.drawRect(300, 200, 80, 20);
+		
+		// Help Button
+		g.drawString(help,305,250);
+		g.drawRect(300, 250, 55, 20);
 		
 		// Put JohnDoe on the screen
 		Image vampir = new Image("res/vampir.png");
@@ -56,7 +71,7 @@ public class Menu extends BasicGameState{
 		if ((xpos>280 && xpos<340)&&(ypos> 350 && ypos < 380)){
 			mouse = "Play!";
 			if (input.isMouseButtonDown(0)){
-				sbg.enterState(1);
+				sbg.enterState(4);
 				Common.msc.playMainGameMusic();
 			}
 		}
@@ -66,7 +81,7 @@ public class Menu extends BasicGameState{
 			posY -= 1;
 		}
 		
-		if ((xpos>280 && xpos<340)&&(ypos> 300 && ypos < 340)){
+		if ((xpos>280 && xpos<340)&&(ypos> 140 && ypos < 190)){
 			exit = "Exit!";
 			if (input.isMouseButtonDown(0)){
 				System.exit(0);
@@ -74,6 +89,40 @@ public class Menu extends BasicGameState{
 		}
 		else
 			exit = "Exit?";
+		
+		if ((xpos>280 && xpos<400)&&(ypos> 310 && ypos < 340)){
+			cont = "Continue!";
+			if (input.isMouseButtonDown(0)){
+				sbg.enterState(4);
+				Common.msc.playMainGameMusic();
+			}
+		}
+		else
+			cont = "Continue?";
+		
+		if ((xpos>280 && xpos<380)&&(ypos> 260 && ypos < 300)){
+			options = "Options!";
+			if (input.isMouseButtonDown(0)){
+				((Game)sbg).prevState = 0;
+				sbg.enterState(2);
+//				Common.msc.playOptionsMusic();
+			}
+		}
+		else
+			options = "Options?";
+		
+		if ((xpos>280 && xpos<350)&&(ypos> 210 && ypos < 240)){
+			help = "Help!";
+			((Game)sbg).prevState = 0;
+			if (input.isMouseButtonDown(0)){
+				((Game)sbg).prevState = 0;
+				sbg.enterState(3);
+//				Common.msc.playOptionsMusic();
+			}
+		}
+		else
+			help = "Help?";
+		
 		
 	}
 	

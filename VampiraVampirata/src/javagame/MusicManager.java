@@ -1,13 +1,16 @@
 package javagame;
 
+import java.util.Observable;
+import java.util.Observer;
+
 import org.newdawn.slick.Music;
 import org.newdawn.slick.SlickException;
 
-public class MusicManager {
+public class MusicManager implements Observer{
 
 	// Properties
 	Music msc;
-	boolean on = false;
+	boolean on = true;
 	float volume;
 	
 	
@@ -25,7 +28,24 @@ public class MusicManager {
 			msc.loop();
 	}
 	
-	public void decreaseVolume(float change) {
+	public void changeVolume(float change) {
 		volume += change;
+		msc.setVolume(volume);
+	}
+	
+	public void playManAwake() throws SlickException {
+		msc = new Music("res/music/psycho.ogg");
+		if (on)
+			msc.loop();
+	}
+
+
+	@Override
+	public void update(Observable options, Object arg1) {
+		// TODO Auto-generated method stub
+		if (options instanceof OptionsData) {
+			msc.setVolume((((OptionsData)options).volume)*0.01f);
+			System.out.println("observeoldum");
+		}
 	}
 }

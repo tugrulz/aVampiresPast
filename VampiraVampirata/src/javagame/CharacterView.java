@@ -44,6 +44,9 @@ public class CharacterView extends MovingView {
 		animList[2] = movingLeft; 
 		animList[3] = movingDown;
 		currentAnim = movingDown;
+		for (int i = 0; i < animList.length; i++) {
+			animList[i].setAutoUpdate(true);
+		}
 		//super.setDefault(movingDown);
 		//currentAnim = movingDown;		
 	}
@@ -53,8 +56,10 @@ public class CharacterView extends MovingView {
 		//super.draw();
 		if (currentAnim == null)
 			System.out.println("null lan bu");
-		else 
+		else {
 			currentAnim.draw(obj.posX, obj.posY);
+		}
+			
 	}
 	
 
