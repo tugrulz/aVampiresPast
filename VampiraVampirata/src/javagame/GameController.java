@@ -40,6 +40,11 @@ public class GameController extends AppGameContainer implements Observer {
 		conv.enterState(state);
 	}
 	
+	// Not implemented
+	public void load(){
+		
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 

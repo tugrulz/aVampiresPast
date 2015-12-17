@@ -95,7 +95,8 @@ public class Menu extends BasicGameState{
 			cont = "Continue!";
 			if (input.isMouseButtonDown(0)){
 //				sbg.enterState(4);
-				((GameController)gc).changeState("introduction");
+				((GameController)gc).load(); // Load is not implemented in the code
+				((GameController)gc).changeState("play");
 				Common.msc.playMainGameMusic();
 			}
 		}

@@ -28,7 +28,8 @@ public class HelpScreen extends BasicGameState{
 		g.drawString("Press ENTER to interact (Not now!).", 20, 100);
 		g.drawString("Press Direction keys to move.", 20, 150);
 		g.drawString("Avoid moving frequently near the sleeping man and avoid him.", 20, 200);
-		g.drawString("Press ENTER to continue.", 20, 250);
+		g.drawString("Find something from your past!", 20, 200);
+		g.drawString("Press ENTER to continue.", 20, 300);
 	}
 	
 	// Updates images (for animations etc.)

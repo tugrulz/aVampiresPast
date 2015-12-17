@@ -40,6 +40,7 @@ public class SleepingManController extends MovingController {
 
 		}
 	}
+	
 
 	public void tour() {
 		((SleepingMan)obj).setChecked(!((SleepingMan)obj).isChecked());
